@@ -29,7 +29,7 @@
 #define    kInAppBrowserToolbarBarPositionTop @"top"
 
 #define    TOOLBAR_HEIGHT 44.0
-#define    STATUSBAR_HEIGHT 20.0
+#define    STATUSBAR_HEIGHT 0.0
 #define    LOCATIONBAR_HEIGHT 21.0
 #define    FOOTER_HEIGHT ((TOOLBAR_HEIGHT) + (LOCATIONBAR_HEIGHT))
 
@@ -869,7 +869,11 @@ static CDVUIInAppBrowser* instance = nil;
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
+  if ([[_browserOptions.statusbarstyle lowercaseString] isEqualToString:@"dark"]) {
     return UIStatusBarStyleDefault;
+  } else {
+    return UIStatusBarStyleLightContent;
+  }
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -1066,5 +1070,3 @@ static CDVUIInAppBrowser* instance = nil;
 }
 
 @end
-
-
